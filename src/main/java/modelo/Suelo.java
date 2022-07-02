@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Arrays;
-
 public enum Suelo {
 
     A("A", "Arenisca"), B("B", "Arenisca/Caliza"), C("C", "Caliza");
@@ -14,14 +12,21 @@ public enum Suelo {
         this.descripcion = descripcion;
     }
 
-    public String getDescripcion(String categoriaSolicitada) {
-
+    public static Suelo getSuelo(String categoriaSolicitada) {
         for (var suelo : values()) {
             if (categoriaSolicitada.toLowerCase()
                     .equals(suelo.categoria.toLowerCase())) {
-                return suelo.descripcion;
+                return suelo;
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    public String getCategoria(){
+        return categoria;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 }
